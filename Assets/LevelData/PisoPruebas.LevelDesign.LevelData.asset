@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670ad16e6abf4aa4b9b9c6bb5ea81170, type: 3}
+  m_Name: PisoPruebas.LevelDesign.LevelData
+  m_EditorClassIdentifier: 
+  levelData:
+    prefabGUID: 6d3139123655f7042b3f868af03d0a63
+    mainSet: {fileID: 11400000, guid: 5c68f49ae842d3c44841737380909fb8, type: 2}
+    objectsSet: {fileID: 11400000, guid: 338340c5f485df24cb45c8831b969b62, type: 2}
+    optionsSettings:
+      moveSnap: 1
+      rotationSnap: 22.5
+      wallsManipulatorsHeight: 1
+      hoverResponsiveHandles: 1
+    visibilitySettings:
+      movement: 1
+      rotation: 1
+      walls: 1
+      wallsMovement: 1
+      wallsRotation: 1
+      wings: 1
+      wingsGrowth: 1
+      wingsLines: 1
+      objects: 1
+      floors: 1
+      hidden: 0
+    wallsData:
+    - simpleObjectData:
+        fileID: 3494268472682078319
+      type: 1
+      wingsData:
+      - growDirection: {x: 1, y: 0, z: 0}
+        chainFileIDs: 
+        capFileID: 2597671026413497016
+      - growDirection: {x: 0, y: 0, z: -1}
+        chainFileIDs: a86e581cb16f4f710a63c771c3b0e57c5fd168f7ea6c1a605627b1b456a51e480b4aaa21f0b6d55a8a5e9bfa5700626b13bc289f8d409f78
+        capFileID: 5903802493165771310
+    - simpleObjectData:
+        fileID: 5969315131412031178
+      type: 2
+      wingsData:
+      - growDirection: {x: 1, y: 0, z: 0}
+        chainFileIDs: d519ff22eea95655
+        capFileID: 5741576636109529033
+      - growDirection: {x: 0, y: 0, z: -1}
+        chainFileIDs: e72896d7688c764c8f130eb5b7ac7d77c1f467fba0f23846d6f2817424c93e6a8c701b613e8df67e58582fd648ccab76dddcecf6f48e2117
+        capFileID: 3245392173035687311
+      - growDirection: {x: -1, y: 0, z: 0}
+        chainFileIDs: 452570542c5cad60eaea9f3f03af474aea3ce5b023b3823e
+        capFileID: 2717816539138842815
+    - simpleObjectData:
+        fileID: 100308262694431219
+      type: 1
+      wingsData:
+      - growDirection: {x: 1, y: 0, z: 0}
+        chainFileIDs: 
+        capFileID: 3148085194702705149
+      - growDirection: {x: 0, y: 0, z: -1}
+        chainFileIDs: c57558581df6d514eb8416f27348957a0ba3960280cf13428fa254c4d08bcb59b69c6dff6034bc139a686fcbaa33a6710919aa7a89745932fd2af9dabf608a31203706593ddea62865a065f80d053030b0aac85e48f0f76d
+        capFileID: 1095860403472517485
+    - simpleObjectData:
+        fileID: 988105798429869328
+      type: 1
+      wingsData:
+      - growDirection: {x: 1, y: 0, z: 0}
+        chainFileIDs: 
+        capFileID: 5158761144724130454
+      - growDirection: {x: 0, y: 0, z: -1}
+        chainFileIDs: d5d0fe3d953b573bcb3a0ce2beaec97f21d2857ba610de6b396e611a9b11d0422c385384d938fa0aa2f37f07de93964d931ea4914e11c357518b7c4030498e639b8c28ee5b8521041a55cf0b8db1a574d3fa19794f2c1708
+        capFileID: 8252549482943101616
+    - simpleObjectData:
+        fileID: 7437344779236923973
+      type: 1
+      wingsData:
+      - growDirection: {x: 1, y: 0, z: 0}
+        chainFileIDs: 8b67bd7212a49c5df707d7c95e1d5f5e75d678b8c1b8887a
+        capFileID: 1314623579485583235
+      - growDirection: {x: 0, y: 0, z: -1}
+        chainFileIDs: 
+        capFileID: 8757888186900213651
+    - simpleObjectData:
+        fileID: 3389839692409319158
+      type: 2
+      wingsData:
+      - growDirection: {x: 1, y: 0, z: 0}
+        chainFileIDs: 
+        capFileID: 1025266876472980044
+      - growDirection: {x: 0, y: 0, z: -1}
+        chainFileIDs: 9b4de16e0a307a79
+        capFileID: 3619069384335585071
+      - growDirection: {x: -1, y: 0, z: 0}
+        chainFileIDs: 
+        capFileID: 7352962444140117588
+    - simpleObjectData:
+        fileID: 3282668950108593228
+      type: 2
+      wingsData:
+      - growDirection: {x: 1, y: 0, z: 0}
+        chainFileIDs: 
+        capFileID: 7200211976456881085
+      - growDirection: {x: 0, y: 0, z: -1}
+        chainFileIDs: 
+        capFileID: 3607707857717138930
+      - growDirection: {x: -1, y: 0, z: 0}
+        chainFileIDs: a313f6d5b0ec1723
+        capFileID: 3804985711247499518
+    simpleObjectsData: []
+    floorsData: []
