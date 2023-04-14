@@ -12,22 +12,30 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.8f;
 
     private CharacterController characterController;
+    private Animator anim;
 
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
         Vector3 movement = Vector3.zero;
 
+
         if (hor != 0 || ver != 0)
         {
+            anim.SetFloat("velocity", 0.7f);
+         
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                speed = 15f;
+            }
             Vector3 forward = camara.forward;
             forward.y = 0;
             forward.Normalize();
@@ -43,19 +51,20 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.5f);
         }
-
-        /*if (characterController.isGrounded && movement.y < 0)
-            movement.y = -2;
-         
-        if (Input.GetButtonDown("Jump") && characterController.isGrounded)
+        else
         {
-            Debug.Log("Salto");
-            movement.y = Mathf.Sqrt(fuerzaSalto * -2 * -gravity);
-        }*/
+            anim.SetFloat("velocity", 0f);
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 10f;
+        }
 
         movement.y += gravity * Time.deltaTime;
 
         characterController.Move(movement);
 
+        Debug.Log(anim.GetBool("velocity"));
     }
 }
