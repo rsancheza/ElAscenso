@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetFloat("velocity", 0.7f);
          
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetButtonDown("Jump"))
             {
                 speed = 15f;
             }
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetFloat("velocity", 0f);
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetButtonUp("Jump"))
         {
             speed = 10f;
         }
