@@ -64,7 +64,5 @@ public class PlayerMovement : MonoBehaviour
         movement.y += gravity * Time.deltaTime;
 
         characterController.Move(movement);
-
-        Debug.Log(anim.GetBool("velocity"));
     }
 }
