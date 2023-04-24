@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     public float estaminaActual = 100;
 
     //Monedas
-
     void Start()
     {
         
@@ -22,3 +21,9 @@ public class Player : MonoBehaviour
         
     }
 }
+/*
+ UI (Vida y Estamina)
+ Estamina
+ Ataque
+ 
+ */
