@@ -7,8 +7,6 @@ public class Player : MonoBehaviour
     public int vidaMax = 100;
     public int vidaActual = 100;
 
-    public float estaminaMax = 100;
-    public float estaminaActual = 100;
 
     //Monedas
     void Start()
