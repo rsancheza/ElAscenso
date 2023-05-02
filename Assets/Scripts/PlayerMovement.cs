@@ -11,8 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float fallVelocity;
     public float gravity = -9.8f;
 
-    public float estaminaMax = 100;
-    public float estaminaActual = 100;
 
     private CharacterController characterController;
     private Animator anim;
@@ -31,32 +29,24 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = Vector3.zero;
 
         //Estamina no va
-        ControlHood.instancia.ActualizarEstamina(estaminaActual, estaminaMax);
+        
 
-        if(estaminaActual <= 0f)
-        {
-            estaminaActual = 0f;
-            speed = 10f;
-        }
-
-        if(estaminaActual >= 100f)
-            estaminaActual = 100f;
+        
 
         if (hor != 0 || ver != 0)
         {
             anim.SetFloat("velocity", 0.7f);
-         
             if (Input.GetButtonDown("Jump"))
             {
-                estaminaActual -= Time.maximumDeltaTime;
+                ControlHood.instancia.ActualizarEstamina(5);
                 speed = 15f;
             }
-            else
+            /*else
             {
                 if(estaminaActual < 100f)
                     estaminaActual += Time.deltaTime;
                 speed = 10f;
-            }
+            }*/
 
             Vector3 forward = camara.forward;
             forward.y = 0;
@@ -77,11 +67,10 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetFloat("velocity", 0f);
         }
-        //Cambiar
+
         if (Input.GetButtonUp("Jump"))
         {
-            if (estaminaActual < 100f)
-                estaminaActual += Time.deltaTime;
+            
             speed = 10f;
         }
 
