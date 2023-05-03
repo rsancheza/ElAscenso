@@ -11,15 +11,23 @@ public class PlayerMovement : MonoBehaviour
     public float fallVelocity;
     public float gravity = -9.8f;
 
-
     private CharacterController characterController;
     private Animator anim;
+    private bool corriendo;
+    private ControlHood hood;
 
+    public static PlayerMovement instancia;
+
+    private void Awake()
+    {
+        instancia = this;
+    }
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        hood = ControlHood.instancia;
     }
 
     void Update()
@@ -27,26 +35,28 @@ public class PlayerMovement : MonoBehaviour
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
         Vector3 movement = Vector3.zero;
-
-        //Estamina no va
         
+        if (hood.estaminaActual > 100)
+            hood.estaminaActual = 100;
 
-        
+        //Quitar vida con el botón A del mando (Para probar la barra de vida sin tener hecho el sistema de pelea)
+        if (Input.GetButtonDown("Fire1"))
+            Player.instancia.vidaActual -= 10;
 
         if (hor != 0 || ver != 0)
         {
             anim.SetFloat("velocity", 0.7f);
-            if (Input.GetButtonDown("Jump"))
+
+            if (hood.estaminaActual > 0)
             {
-                ControlHood.instancia.ActualizarEstamina(5);
-                speed = 15f;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    corriendo = true;
+                }
             }
-            /*else
-            {
-                if(estaminaActual < 100f)
-                    estaminaActual += Time.deltaTime;
-                speed = 10f;
-            }*/
+
+            if (corriendo)
+                hood.ActualizarEstamina(0.01f);
 
             Vector3 forward = camara.forward;
             forward.y = 0;
@@ -70,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonUp("Jump"))
         {
-            
+            corriendo = false;
             speed = 10f;
         }
 

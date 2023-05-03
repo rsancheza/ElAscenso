@@ -8,9 +8,13 @@ public class Player : MonoBehaviour
     public int vidaMax = 100;
     public int vidaActual = 100;
 
-    public Image barraEstamina;
+    public static Player instancia;
 
-    //Monedas
+    private void Awake()
+    {
+        instancia = this;
+    }
+
     void Start()
     {
         
@@ -18,12 +22,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        ControlHood.instancia.ActualizarVida(vidaActual, vidaMax);
     }
 }
 /*
  UI (Vida y Estamina)
  Estamina
  Ataque
- 
+ Monedas
  */

@@ -581,6 +581,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8649915867235694331, guid: 35f455267eabeb5429256bfe2d72cfd6, type: 3}
+      propertyPath: m_Name
+      value: FillEstamina
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35f455267eabeb5429256bfe2d72cfd6, type: 3}
 --- !u!1 &213335551
@@ -5429,6 +5433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051473530}
   - component: {fileID: 2051473533}
+  - component: {fileID: 2051473535}
   - component: {fileID: 2051473531}
   - component: {fileID: 2051473532}
   - component: {fileID: 2051473534}
@@ -5506,8 +5511,6 @@ MonoBehaviour:
   fuerzaSalto: 5
   fallVelocity: 0
   gravity: -9.8
-  estaminaMax: 100
-  estaminaActual: 100
 --- !u!95 &2051473534
 Animator:
   serializedVersion: 4
@@ -5528,6 +5531,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2051473535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051473529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0794e2987d2cf439ebc4ae7a7f7ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaMax: 100
+  vidaActual: 100
+  barraEstamina: {fileID: 0}
 --- !u!1 &2065693724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2491468853336758386, guid: 54715bae0ae09a44fbbc81c88f9b8e81, type: 3}

@@ -47,46 +47,32 @@ public class ControlHood : MonoBehaviour
     {
         if(estaminaActual - cantidad >= 0)
         {
-            if (gastar != null)
-                StopCoroutine(gastar);
-
-            gastar = StartCoroutine(QuitarEstamina());
+            estaminaActual -= cantidad;
+            barraEstamina.fillAmount = (float)estaminaActual / (float)estaminaMax;
+            PlayerMovement.instancia.speed = 15f;
 
             if (regeneracion != null)
                 StopCoroutine(regeneracion);
 
             regeneracion = StartCoroutine(RegenerarEstamina());
-
-            /*estaminaActual -= cantidad;
-            barraEstamina.fillAmount = estaminaActual;*/
         }
         else
         {
+            PlayerMovement.instancia.speed = 10f;
             Debug.Log("No tienes estamina");
         }
     }
 
     IEnumerator RegenerarEstamina()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
 
         while (estaminaActual < estaminaMax)
         {
-            estaminaActual += estaminaMax / 100;
-            barraEstamina.fillAmount = estaminaActual;
-            yield return new WaitForSeconds(0.1f);
+            estaminaActual += estaminaMax / 200;
+            barraEstamina.fillAmount = (float)estaminaActual / (float)estaminaMax;
+            yield return new WaitForSeconds(0.05f);
         }
         regeneracion = null;
-    }
-
-    IEnumerator QuitarEstamina()
-    {
-        while (estaminaActual >= 0)
-        {
-            estaminaActual -= estaminaMax / 100;
-            barraEstamina.fillAmount = estaminaActual;
-            yield return new WaitForSeconds(0.1f);
-        }
-        gastar = null;
     }
 }
