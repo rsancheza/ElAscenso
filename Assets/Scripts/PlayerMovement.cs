@@ -56,7 +56,10 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if (corriendo)
+            {
                 hood.ActualizarEstamina(0.01f);
+                anim.SetBool("run", true);
+            }
 
             Vector3 forward = camara.forward;
             forward.y = 0;
@@ -71,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
             movement = dir * speed * Time.deltaTime;
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.5f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir * Time.deltaTime), 0.5f);
         }
         else
         {
@@ -81,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             corriendo = false;
+            anim.SetBool("run", false);
             speed = 10f;
         }
 

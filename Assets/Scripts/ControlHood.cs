@@ -19,9 +19,9 @@ public class ControlHood : MonoBehaviour
     public GameObject ventanaPausa;
 
 
-    /*[Header("VentanaFinJuego")]
+    [Header("VentanaFinJuego")]
     public GameObject ventanaFinJuego;
-    public TextMeshProUGUI resultadoTexto;*/
+    public TextMeshProUGUI resultadoTexto;
 
     public static ControlHood instancia;
 
@@ -38,11 +38,18 @@ public class ControlHood : MonoBehaviour
         barraEstamina.fillAmount = estaminaMax;
     }
 
+    public void ActualizarPuntuacion(int puntos)
+    {
+        puntuacionTexto.text = puntos.ToString("0000");
+    }
+
+    //Vida
     public void ActualizarVida(int vidaActual, int vidaMax)
     {
         barraVidas.fillAmount = (float)vidaActual / (float)vidaMax;
     }
 
+    //Estamina
     public void ActualizarEstamina(float cantidad)
     {
         if(estaminaActual - cantidad >= 0)
@@ -74,5 +81,16 @@ public class ControlHood : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         regeneracion = null;
+    }
+
+    //Fin del Juego
+    public void EstablecerVentanaFinJuego(bool ganado)
+    {
+        ventanaFinJuego.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        resultadoTexto.text = ganado ? "HAS GANADO" : "HAS PERDIDO";
+        resultadoTexto.color = ganado ? Color.green : Color.red;
+        Time.timeScale = 0f;
+        Destroy(PlayerMovement.instancia);
     }
 }

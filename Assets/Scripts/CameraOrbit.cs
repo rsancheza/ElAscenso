@@ -15,6 +15,7 @@ public class CameraOrbit : MonoBehaviour
 
     void Start()
     {
+        //Puede que se necesite un método al bloquear el cursor para poder acceder al inventario y otra parafernalia.
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         cam = GetComponent<Camera>();
         CalculateNearPlaneSice();
@@ -25,13 +26,13 @@ public class CameraOrbit : MonoBehaviour
         float hor = Input.GetAxis("Mouse X");
 
         if (hor != 0)
-            angle.x += hor * Mathf.Deg2Rad * sensitivity.x;
+            angle.x += hor * Mathf.Deg2Rad * sensitivity.x * Time.deltaTime;
 
         float ver = Input.GetAxis("Mouse Y");
 
         if(ver != 0)
         {
-            angle.y += ver * Mathf.Deg2Rad * sensitivity.y;
+            angle.y += ver * Mathf.Deg2Rad * sensitivity.y * Time.deltaTime;
             angle.y = Mathf.Clamp(angle.y, -80 * Mathf.Deg2Rad, 80 * Mathf.Deg2Rad);
         }
     }

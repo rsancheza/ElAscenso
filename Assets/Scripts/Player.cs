@@ -23,11 +23,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         ControlHood.instancia.ActualizarVida(vidaActual, vidaMax);
+        if(vidaActual <= 0)
+            ControlHood.instancia.EstablecerVentanaFinJuego(false);
     }
 }
 /*
- UI (Vida y Estamina)
- Estamina
  Ataque
  Monedas
+Animacion Puñetazo
  */
