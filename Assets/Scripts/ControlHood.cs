@@ -23,9 +23,13 @@ public class ControlHood : MonoBehaviour
     public GameObject ventanaFinJuego;
     public TextMeshProUGUI resultadoTexto;
 
+    public GameObject Tienda;
+
     public static ControlHood instancia;
 
-    private Coroutine regeneracion, gastar;
+    private Coroutine regeneracion;
+    private Animator anim;
+    private bool juegoPausado;
 
     private void Awake()
     {
@@ -36,6 +40,15 @@ public class ControlHood : MonoBehaviour
     {
         estaminaActual = estaminaMax;
         barraEstamina.fillAmount = estaminaMax;
+        anim = PlayerMovement.instancia.GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            CambiarPausa();
+        }
     }
 
     public void ActualizarPuntuacion(int puntos)
@@ -57,6 +70,7 @@ public class ControlHood : MonoBehaviour
             estaminaActual -= cantidad;
             barraEstamina.fillAmount = (float)estaminaActual / (float)estaminaMax;
             PlayerMovement.instancia.speed = 15f;
+            anim.SetBool("run", true);
 
             if (regeneracion != null)
                 StopCoroutine(regeneracion);
@@ -66,6 +80,7 @@ public class ControlHood : MonoBehaviour
         else
         {
             PlayerMovement.instancia.speed = 10f;
+            anim.SetBool("run", false);
             Debug.Log("No tienes estamina");
         }
     }
@@ -81,6 +96,20 @@ public class ControlHood : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         regeneracion = null;
+    }
+
+    //Pausa
+    public void CambiarEstadoVentanaPausa(bool estado)
+    {
+        Tienda.SetActive(estado);
+    }
+
+    public void CambiarPausa()
+    {
+        juegoPausado = !juegoPausado;
+        //Time.timeScale = (juegoPausado ? 0.0f : 1f);
+        Cursor.lockState = (juegoPausado) ? CursorLockMode.None : CursorLockMode.Locked;
+        CambiarEstadoVentanaPausa(juegoPausado);
     }
 
     //Fin del Juego
