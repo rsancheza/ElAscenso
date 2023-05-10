@@ -58,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
             if (corriendo)
             {
                 hood.ActualizarEstamina(0.01f);
-                //anim.SetBool("run", true);
             }
 
             Vector3 forward = camara.forward;
@@ -84,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             corriendo = false;
-            //anim.SetBool("run", false);
+            anim.SetBool("run", false);
             speed = 10f;
         }
 
