@@ -58,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
             if (corriendo)
             {
                 hood.ActualizarEstamina(0.01f);
-                //anim.SetBool("run", true);
             }
 
             Vector3 forward = camara.forward;
