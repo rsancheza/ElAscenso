@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemigo
   - Suelo
+  - Minimap
+  - Jugador
+  - Techo
   layers:
   - Default
   - TransparentFX
@@ -13,10 +16,10 @@ TagManager:
   - floorMask
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - minimap
+  - jugador
+  - enemigo
+  - techo
   - 
   - 
   - 
