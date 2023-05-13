@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public int vidaMax = 100;
     public int vidaActual = 100;
 
+
     public int puntos = 0;
 
     public static Player instancia;
@@ -25,8 +26,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         ControlHood.instancia.ActualizarVida(vidaActual, vidaMax);
-        if(vidaActual <= 0)
-            ControlHood.instancia.EstablecerVentanaFinJuego(false);
+        if (vidaActual <= 0)
+        {
+            //ControlHood.instancia.EstablecerVentanaFinJuego(false);
+            ControlHood.instancia.RespawnPlayer();
+            vidaActual = vidaMax;
+        }
 
         if (Input.GetButtonDown("Fire1"))
             puntos += 5;
