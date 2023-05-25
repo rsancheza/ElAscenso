@@ -33,7 +33,7 @@ public class Inventario : MonoBehaviour
 
     [Header("Prefs e items")]
     public static GameObject Descripcion;
-    //public CartelEliminacion CE;
+    public CartelEliminacion CE;
     public int OSC;
     public int OSID;
 
@@ -50,7 +50,7 @@ public class Inventario : MonoBehaviour
 
         Descripcion = GameObject.Find("Descripcion");
 
-        //CE.gameObject.SetActive(false);
+        CE.gameObject.SetActive(false);
 
         canvas = transform.parent.transform;
     }
@@ -63,7 +63,7 @@ public class Inventario : MonoBehaviour
 
     void Arrastrar()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             pointerData.position = Input.mousePosition;
             graphRay.Raycast(pointerData, raycastResults);
@@ -72,6 +72,10 @@ public class Inventario : MonoBehaviour
                 if (raycastResults[0].gameObject.GetComponent<Item>())
                 {
                     objetoSeleccionado = raycastResults[0].gameObject;
+
+                    OSC = objetoSeleccionado.GetComponent<Item>().cantidad;
+                    OSID = objetoSeleccionado.GetComponent<Item>().ID;
+
                     exParent = objetoSeleccionado.transform.parent;
                     exParent.GetComponent<Image>().fillCenter = false;
                     objetoSeleccionado.transform.SetParent(canvas);
@@ -86,7 +90,7 @@ public class Inventario : MonoBehaviour
 
         if(objetoSeleccionado != null)
         {
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(1))
             {
                 pointerData.position = Input.mousePosition;
                 raycastResults.Clear();
@@ -104,22 +108,39 @@ public class Inventario : MonoBehaviour
                             if (resultado.gameObject.GetComponentInChildren<Item>() == null)
                             {
                                 objetoSeleccionado.transform.SetParent(resultado.gameObject.transform);
-                                objetoSeleccionado.transform.localPosition = Vector2.zero;
-                                exParent = objetoSeleccionado.transform.parent.transform;
+                                Debug.Log("Slot Libre");
+                                //objetoSeleccionado.transform.localPosition = Vector2.zero;
+                                //exParent = objetoSeleccionado.transform.parent.transform;
                             }
                         }
                         if (resultado.gameObject.CompareTag("Item"))
                         {
                             if (resultado.gameObject.GetComponentInChildren<Item>().ID == objetoSeleccionado.GetComponent<Item>().ID)
                             {
+                                Debug.Log("Tienen el mismo ID");
                                 resultado.gameObject.GetComponentInChildren<Item>().cantidad += objetoSeleccionado.GetComponent<Item>().cantidad;
-                                Destroy(objetoSeleccionado.gameObject);
+                                //Destroy(objetoSeleccionado.gameObject);
                             }
                             else
                             {
-                                objetoSeleccionado.transform.SetParent(resultado.gameObject.transform.parent);
-                                objetoSeleccionado.transform.SetParent(exParent.transform);
-                                objetoSeleccionado.transform.localPosition = Vector2.zero;
+                                Debug.Log("Distinto ID");
+                                //objetoSeleccionado.transform.SetParent(resultado.gameObject.transform.parent);
+                                objetoSeleccionado.transform.SetParent(exParent);
+                                resultado.gameObject.transform.SetParent(exParent);
+                                resultado.gameObject.transform.localPosition = Vector3.zero;
+                                //objetoSeleccionado.transform.localPosition = Vector2.zero;
+                            }
+                        }
+                        if (resultado.gameObject.CompareTag("Eliminar"))
+                        {
+                            if(objetoSeleccionado.gameObject.GetComponent<Item>().cantidad >= 2)
+                            {
+                                CE.gameObject.SetActive(true);
+                            }
+                            else
+                            {
+                                CE.gameObject.SetActive(false);
+                                EliminarItem(objetoSeleccionado.gameObject.GetComponent<Item>().ID, objetoSeleccionado.gameObject.GetComponent<Item>().cantidad);
                             }
                         }
                     }
@@ -192,14 +213,14 @@ public class Inventario : MonoBehaviour
                 pool[i].GetComponent<Image>().sprite = data.baseDatos[o.id].icono;
                 pool[i].GetComponent<RectTransform>().localPosition = Vector3.zero;
                 pool[i].cantidad = o.cantidad;
-                //pool[i].Boton.onClick.RemoveAllListeners();
-                //pool[i].Boton.onClick.AddListener(() => gameObject.SendMessage(data.baseDatos[o.id].Void, SendMessageOptions.DontRequireReceiver));
+                pool[i].Boton.onClick.RemoveAllListeners();
+                pool[i].Boton.onClick.AddListener(() => gameObject.SendMessage(data.baseDatos[o.id].Void, SendMessageOptions.DontRequireReceiver));
                 pool[i].gameObject.SetActive(true);
             }
             else
             {
                 pool[i].gameObject.SetActive(false);
-                //pool[i]._descripcion.SetActive(false);
+                pool[i]._descripcion.SetActive(false);
                 pool[i].gameObject.transform.parent.GetComponent<Image>().fillCenter = false;
             }
         }
@@ -230,8 +251,8 @@ public class Inventario : MonoBehaviour
                 pool[i].GetComponent<Image>().sprite = data.baseDatos[o.id].icono;
                 pool[i].GetComponent<RectTransform>().localPosition = Vector3.zero;
                 pool[i].cantidad = o.cantidad;
-                //pool[i].Boton.onClick.RemoveAllListeners();
-                //pool[i].Boton.onClick.AddListener(() => gameObject.SendMessage(data.baseDatos[o.id].Void, SendMessageOptions.DontRequireReceiver));
+                pool[i].Boton.onClick.RemoveAllListeners();
+                pool[i].Boton.onClick.AddListener(() => gameObject.SendMessage(data.baseDatos[o.id].Void, SendMessageOptions.DontRequireReceiver));
                 pool[i].gameObject.SetActive(true);
             }
 

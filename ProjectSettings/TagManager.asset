@@ -8,6 +8,7 @@ TagManager:
   - Suelo
   - Slot
   - Item
+  - Eliminar
   layers:
   - Default
   - TransparentFX

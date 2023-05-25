@@ -14,6 +14,7 @@ public class DataBase : ScriptableObject
         public Tipo tipo;
         public bool acumulable;
         public string descripcion;
+        public string Void;
     }
 
     public enum Tipo
