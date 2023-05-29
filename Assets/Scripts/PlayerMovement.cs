@@ -10,11 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public float fuerzaSalto;
     public float fallVelocity;
     public float gravity = -9.8f;
+    public float frecuenciaGolpe;
 
     private CharacterController characterController;
     private Animator anim;
     private bool corriendo;
     private ControlHood hood;
+    private float ultimoTiempoGolpe;
 
     public static PlayerMovement instancia;
 
@@ -39,9 +41,10 @@ public class PlayerMovement : MonoBehaviour
         if (hood.estaminaActual > 100)
             hood.estaminaActual = 100;
 
-        //Quitar vida con el botón A del mando (Para probar la barra de vida sin tener hecho el sistema de pelea)
-        if (Input.GetButtonDown("Fire1"))
-            Player.instancia.vidaActual -= 10;
+        if (Input.GetButtonDown("Fire1") && PuedeGolpear())
+        {
+            Golpear();
+        }
 
         if (hor != 0 || ver != 0)
         {
@@ -90,5 +93,19 @@ public class PlayerMovement : MonoBehaviour
         movement.y += gravity * Time.deltaTime;
 
         characterController.Move(movement);
+    }
+
+    public bool PuedeGolpear()
+    {
+        if (Time.time - ultimoTiempoGolpe >= frecuenciaGolpe)
+            return true;
+        return false;
+    }
+
+    public void Golpear()
+    {
+        ultimoTiempoGolpe = Time.time;
+        //audioSource.PlayOneShot(sonidoGolpe);
+        anim.SetTrigger("golpe");
     }
 }

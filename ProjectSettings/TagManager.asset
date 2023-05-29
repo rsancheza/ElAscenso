@@ -9,6 +9,13 @@ TagManager:
   - Slot
   - Item
   - Eliminar
+  - Bate
+  - Maletin
+  - "Pu\xF1o"
+  - ArmaEnemigo1
+  - ArmaEnemigo2
+  - ArmaEnemigo3
+  - ArmaMiniBoss
   layers:
   - Default
   - TransparentFX
