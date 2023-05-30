@@ -16,6 +16,8 @@ TagManager:
   - ArmaEnemigo2
   - ArmaEnemigo3
   - ArmaMiniBoss
+  - BateRecoger
+  - MaletinRecoger
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class RecogerArmas : MonoBehaviour
 {
-    public bool entra = false;
+    public void Eliminar()
+    {
+        Destroy(this);
+    }
+
+    /*public bool entra = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,5 +30,5 @@ public class RecogerArmas : MonoBehaviour
         {
             GUI.Box(new Rect(414, 126, 351, 32), "Presiona Q o X (JoyStick) para agarrar");
         }
-    }
+    }*/
 }

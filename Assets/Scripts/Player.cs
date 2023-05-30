@@ -25,8 +25,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         ControlHood.instancia.ActualizarVida(vidaActual, vidaMax);
+
         if(vidaActual <= 0)
             ControlHood.instancia.EstablecerVentanaFinJuego(false);
+
         ControlHood.instancia.ActualizarPuntuacion(puntos);
         ControlHood.instancia.ActualizarCuraciones(maxEstus);
 
@@ -86,20 +88,19 @@ public class Player : MonoBehaviour
             RestarPuntos(10);
             vidaActual -= 15;
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Bate"))
+        
+        if (collision.CompareTag("BateRecoger"))
         {
             bate.SetActive(true);
             maletin.SetActive(false);
+            Destroy(collision.gameObject);     
         }
 
-        if (other.CompareTag("Maletin"))
+        if (collision.CompareTag("MaletinRecoger"))
         {
             maletin.SetActive(true);
             bate.SetActive(false);
+            Destroy(collision.gameObject);
         }
     }
 

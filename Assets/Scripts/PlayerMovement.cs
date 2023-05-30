@@ -11,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public float fallVelocity;
     public float gravity = -9.8f;
     public float frecuenciaGolpe;
+    public AudioClip sonidoGolpe;
 
     private CharacterController characterController;
     private Animator anim;
     private bool corriendo;
     private ControlHood hood;
     private float ultimoTiempoGolpe;
+    private AudioSource audioSource;
 
     public static PlayerMovement instancia;
 
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         hood = ControlHood.instancia;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -105,7 +108,12 @@ public class PlayerMovement : MonoBehaviour
     public void Golpear()
     {
         ultimoTiempoGolpe = Time.time;
-        //audioSource.PlayOneShot(sonidoGolpe);
         anim.SetTrigger("golpe");
+        Invoke("Sonido",0.5f);
+    }
+
+    public void Sonido()
+    {
+        audioSource.PlayOneShot(sonidoGolpe);
     }
 }

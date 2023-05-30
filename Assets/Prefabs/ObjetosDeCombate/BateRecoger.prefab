@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7745832961151537581}
   - component: {fileID: 7745832961151537580}
   - component: {fileID: 7745832961151537579}
-  - component: {fileID: 7745832961151537578}
   - component: {fileID: 7745832961151537577}
-  - component: {fileID: 7745832961151537582}
+  - component: {fileID: 236632261}
+  - component: {fileID: 236632262}
   m_Layer: 0
   m_Name: BateRecoger
-  m_TagString: Bate
+  m_TagString: BateRecoger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7745832961151537576}
-  m_LocalRotation: {x: -0.016515858, y: -0.000031255473, z: 0.000023179826, w: -0.9998636}
+  m_LocalRotation: {x: 0.016518753, y: 0.00003535106, z: -0.000026788795, w: 0.99986356}
   m_LocalPosition: {x: -22.47, y: 0.35, z: 5.34}
   m_LocalScale: {x: 15, y: 15, z: 14.9999895}
   m_ConstrainProportionsScale: 0
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7745832961151537578
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7745832961151537576}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1427976, y: 0.11130589, z: 0.160984}
-  m_Center: {x: -0.008374612, y: 0.04995778, z: 0.0062196343}
 --- !u!54 &7745832961151537577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,17 +101,29 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &7745832961151537582
+  m_CollisionDetection: 2
+--- !u!114 &236632261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7745832961151537576}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d42add1b2ffbb8489cee9a77d3dfe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entra: 0
+--- !u!65 &236632262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7745832961151537576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0.1, z: 0}

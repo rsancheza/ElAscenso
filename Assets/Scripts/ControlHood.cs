@@ -131,6 +131,7 @@ public class ControlHood : MonoBehaviour
 
     public void ActivarControles()
     {
+        Tienda.SetActive(true);
         ControlesMando.SetActive(true);
     }
 
@@ -149,5 +150,22 @@ public class ControlHood : MonoBehaviour
     public void Menu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void Volver()
+    {
+        Tienda.SetActive(true);
+        ControlesTeclado.SetActive(false);
+        ControlesMando.SetActive(false);
+    }
+
+    public void Jugar()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Creditos()
+    {
+        SceneManager.LoadScene("Creditos");
     }
 }
