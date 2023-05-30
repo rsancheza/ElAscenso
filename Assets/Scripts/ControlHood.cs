@@ -9,6 +9,7 @@ public class ControlHood : MonoBehaviour
 {
     [Header("Hood")]
     public TextMeshProUGUI puntuacionTexto;
+    public TextMeshProUGUI curaciones;
     public Image barraVidas;
     public Image barraEstamina;
 
@@ -16,14 +17,14 @@ public class ControlHood : MonoBehaviour
     public float estaminaActual;
 
     [Header("VentanaPausa")]
-    public GameObject ventanaPausa;
-
+    public GameObject Tienda;
+    public GameObject ControlesMando;
+    public GameObject ControlesTeclado;
 
     [Header("VentanaFinJuego")]
     public GameObject ventanaFinJuego;
     public TextMeshProUGUI resultadoTexto;
 
-    public GameObject Tienda;
 
     public static ControlHood instancia;
 
@@ -66,6 +67,11 @@ public class ControlHood : MonoBehaviour
     public void ActualizarPuntuacion(int puntos)
     {
         puntuacionTexto.text = puntos.ToString("0000");
+    }
+
+    public void ActualizarCuraciones(int curacion)
+    {
+        curaciones.text = curacion.ToString("0");
     }
 
     //Vida
@@ -133,5 +139,27 @@ public class ControlHood : MonoBehaviour
         resultadoTexto.color = ganado ? Color.green : Color.red;
         Time.timeScale = 0f;
         Destroy(PlayerMovement.instancia);
+    }
+
+    public void ActivarControles()
+    {
+        ControlesMando.SetActive(true);
+    }
+
+    public void CambioTeclado()
+    {
+        ControlesMando.SetActive(false);
+        ControlesTeclado.SetActive(true);
+    }
+
+    public void CambioMando()
+    {
+        ControlesTeclado.SetActive(false);
+        ControlesMando.SetActive(true);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

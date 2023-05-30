@@ -6,9 +6,16 @@ TagManager:
   tags:
   - Enemigo
   - Suelo
-  - Minimap
-  - Jugador
-  - Techo
+  - Slot
+  - Item
+  - Eliminar
+  - Bate
+  - Maletin
+  - "Pu\xF1o"
+  - ArmaEnemigo1
+  - ArmaEnemigo2
+  - ArmaEnemigo3
+  - ArmaMiniBoss
   layers:
   - Default
   - TransparentFX
@@ -16,10 +23,10 @@ TagManager:
   - floorMask
   - Water
   - UI
-  - minimap
-  - jugador
-  - enemigo
-  - techo
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
