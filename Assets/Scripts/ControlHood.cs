@@ -28,6 +28,9 @@ public class ControlHood : MonoBehaviour
 
     public static ControlHood instancia;
 
+    public Transform spawnPoint;
+    public Transform playerPos;
+
     private Coroutine regeneracion;
     private Animator anim;
     private bool juegoPausado;
@@ -42,6 +45,9 @@ public class ControlHood : MonoBehaviour
         estaminaActual = estaminaMax;
         barraEstamina.fillAmount = estaminaMax;
         anim = PlayerMovement.instancia.GetComponent<Animator>();
+
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        spawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
     }
 
     private void Update()
@@ -52,6 +58,12 @@ public class ControlHood : MonoBehaviour
         }
     }
 
+    //Respawn Jugador
+    public void RespawnPlayer()
+    {
+        playerPos.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z);
+        
+    }
     public void ActualizarPuntuacion(int puntos)
     {
         puntuacionTexto.text = puntos.ToString("0000");
