@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.8f;
     public float frecuenciaGolpe;
     public AudioClip sonidoGolpe;
+    public bool golpeando;
 
     private CharacterController characterController;
     private Animator anim;
@@ -109,11 +110,13 @@ public class PlayerMovement : MonoBehaviour
     {
         ultimoTiempoGolpe = Time.time;
         anim.SetTrigger("golpe");
+        golpeando = true;
         Invoke("Sonido",0.5f);
     }
 
     public void Sonido()
     {
         audioSource.PlayOneShot(sonidoGolpe);
+        golpeando = false;
     }
 }

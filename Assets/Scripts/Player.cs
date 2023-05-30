@@ -15,11 +15,17 @@ public class Player : MonoBehaviour
     public static Player instancia;
 
     public float frecuenciaGolpeado;
-    private float ultimoTiempoGolpeado;
+    private float ultimoTiempoGolpeado; 
+    private Enemigo enemigo;
 
     private void Awake()
     {
         instancia = this;
+    }
+
+    private void Start()
+    {
+        enemigo = Enemigo.instancia;
     }
 
     void Update()
@@ -61,28 +67,28 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("ArmaEnemigo1") && PuedeSerGolpeado())
+        if (collision.CompareTag("ArmaEnemigo1") && PuedeSerGolpeado() && enemigo.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
             RestarPuntos(1);
             vidaActual -= 3;
         }
 
-        if (collision.CompareTag("ArmaEnemigo2") && PuedeSerGolpeado())
+        if (collision.CompareTag("ArmaEnemigo2") && PuedeSerGolpeado() && enemigo.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
             RestarPuntos(2);
             vidaActual -= 5;
         }
 
-        if (collision.CompareTag("ArmaEnemigo3") && PuedeSerGolpeado())
+        if (collision.CompareTag("ArmaEnemigo3") && PuedeSerGolpeado() && enemigo.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
             RestarPuntos(5);
             vidaActual -= 10;
         }
 
-        if (collision.CompareTag("ArmaMiniBoss") && PuedeSerGolpeado())
+        if (collision.CompareTag("ArmaMiniBoss") && PuedeSerGolpeado() && enemigo.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
             RestarPuntos(10);
