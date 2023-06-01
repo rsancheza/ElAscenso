@@ -18,6 +18,7 @@ TagManager:
   - ArmaMiniBoss
   - BateRecoger
   - MaletinRecoger
+  - Estus
   layers:
   - Default
   - TransparentFX

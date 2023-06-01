@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class Enemigo : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class Enemigo : MonoBehaviour
     public AudioClip sonidoGolpe;
     public bool golpeando;
     public float frecuenciaGolpe;
+    public GameObject[] drops;
 
     private NavMeshAgent EnemigoPruebas;
 
@@ -25,13 +28,6 @@ public class Enemigo : MonoBehaviour
     private PlayerMovement PlayerMovement;
     private float ultimoTiempoGolpe;
 
-    public static Enemigo instancia;
-
-    private void Awake()
-    {
-        instancia = this;
-    }
-
     void Start()
     {
         EnemigoPruebas = GetComponent<NavMeshAgent>();
@@ -44,15 +40,16 @@ public class Enemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Player = GameObject.Find("Jugador");
         float distance = Vector3.Distance(transform.position, Player.transform.position);
 
         //Seguimiento jugador
         if (distance < EnemyDistanceRun && distance > EnemyDistanceHit)
         {
+            anim.SetBool("run", true);
             Vector3 dirToPlayer = transform.position - Player.transform.position;
 
             GetComponent<NavMeshAgent>().speed = 6;
-            anim.SetBool("run", true);
 
             Vector3 newPos = transform.position - dirToPlayer;
 
@@ -70,9 +67,15 @@ public class Enemigo : MonoBehaviour
             anim.SetBool("run", false);
             Golpear();
         }
+        else
+        {
+            anim.SetBool("run", true);
+        }
 
+        //Muerte
         if (vidaActual <= 0)
         {
+            Dropear();
             Destroy(gameObject);
         }
 
@@ -83,20 +86,27 @@ public class Enemigo : MonoBehaviour
         if (collision.CompareTag("Bate") && PuedeSerGolpeado() && PlayerMovement.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
-            vidaActual -= 35;
+            vidaActual -= 45;
         }
 
         if (collision.CompareTag("Maletin") && PuedeSerGolpeado() && PlayerMovement.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
-            vidaActual -= 20;
+            vidaActual -= 35;
         }
 
         if (collision.CompareTag("Puño") && PuedeSerGolpeado() && PlayerMovement.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
-            vidaActual -= 10;
+            vidaActual -= 20;
         }
+    }
+
+    public void Dropear()
+    {
+        int drop = Random.Range(0, drops.Length);
+        GameObject obj = drops[drop];
+        Instantiate(obj, new Vector3(transform.position.x, transform.position.y +0.5f, transform.position.z), transform.rotation);
     }
 
     public void Golpear()
