@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/EscenarioMedieval.unity
     guid: 8169b772f775fa74eb01b7ed69ace8a2
   - enabled: 1
+    path: Assets/Scenes/EscenarioCafeteria.unity
+    guid: 8fcf361fe1234664bae1cedf6194effd
+  - enabled: 1
     path: Assets/Scenes/Terraza.unity
     guid: 14693d15641f6b04abc7c6cb63642bca
   - enabled: 1
