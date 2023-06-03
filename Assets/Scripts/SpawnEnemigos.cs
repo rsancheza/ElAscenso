@@ -34,7 +34,7 @@ public class SpawnEnemigos : MonoBehaviour
             if (enemy > 90)
                 Instantiate(enemigos[2], spawns[spawn].transform);
 
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(10);
         }
         puerta.SetActive(true);
         yield return null;
