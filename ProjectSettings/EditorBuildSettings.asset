@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 28567d9169b8a3743b657dd51ea9b7a2
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 578f06d235d181743bd2443755a5cbf4
+    path: Assets/Scenes/EscenarioCalle.unity
+    guid: 6e110e1114dc1214b956663a152c637f
+  - enabled: 1
+    path: Assets/Scenes/EscenarioServidores.unity
+    guid: 14b2730c40529784aa8e8fbfb1ccb1fd
+  - enabled: 1
+    path: Assets/Scenes/Terraza.unity
+    guid: 14693d15641f6b04abc7c6cb63642bca
   - enabled: 1
     path: Assets/Scenes/Creditos.unity
     guid: acc8fda688f312247994a6c205d1e750

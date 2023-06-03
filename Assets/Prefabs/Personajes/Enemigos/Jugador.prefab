@@ -380,7 +380,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 85e43641aab0837419aca0440c01f037, type: 2}
   m_TargetDisplay: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
   bate: {fileID: 5173591569098865073}
   maletin: {fileID: 5978494283803840054}
   maxEstus: 5
-  puntos: 100
+  puntos: 0
   frecuenciaGolpeado: 1
 --- !u!143 &925156072074385551
 CharacterController:

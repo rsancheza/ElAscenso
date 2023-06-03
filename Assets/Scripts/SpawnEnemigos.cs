@@ -9,6 +9,8 @@ public class SpawnEnemigos : MonoBehaviour
 
     public int enemigosMax = 10;
 
+    public GameObject puerta;
+
     private void Start()
     {
         StartCoroutine(Spawnear());        
@@ -34,7 +36,7 @@ public class SpawnEnemigos : MonoBehaviour
 
             yield return new WaitForSeconds(8);
         }
-
+        puerta.SetActive(true);
         yield return null;
     }
 }

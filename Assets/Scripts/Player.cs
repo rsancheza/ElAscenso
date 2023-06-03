@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
         if (vidaActual > 100)
             vidaActual = 100;
 
+        if(puntos < 0)
+            puntos = 0;
+
         if (Input.GetButtonDown("Fire2") && maxEstus > 0 && vidaActual < vidaMax && vidaActual > 0)
         {
             Debug.Log("Curando");

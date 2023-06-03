@@ -16,7 +16,7 @@ public class Enemigo : MonoBehaviour
 
     private NavMeshAgent EnemigoPruebas;
 
-    public GameObject Player;
+    public GameObject player;
 
     public float EnemyDistanceRun = 4.0f;
     public float EnemyDistanceHit = 3.0f;
@@ -40,14 +40,14 @@ public class Enemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Player = GameObject.Find("Jugador");
-        float distance = Vector3.Distance(transform.position, Player.transform.position);
+        player = GameObject.Find("Jugador");
+        float distance = Vector3.Distance(transform.position, player.transform.position);
 
         //Seguimiento jugador
         if (distance < EnemyDistanceRun && distance > EnemyDistanceHit)
         {
             anim.SetBool("run", true);
-            Vector3 dirToPlayer = transform.position - Player.transform.position;
+            Vector3 dirToPlayer = transform.position - player.transform.position;
 
             GetComponent<NavMeshAgent>().speed = 6;
 
@@ -75,6 +75,9 @@ public class Enemigo : MonoBehaviour
         //Muerte
         if (vidaActual <= 0)
         {
+            if (this.CompareTag("Boss"))
+                ControlHood.instancia.EstablecerVentanaFinJuego(true);
+
             Dropear();
             Destroy(gameObject);
         }
@@ -87,18 +90,21 @@ public class Enemigo : MonoBehaviour
         {
             ultimoTiempoGolpeado = Time.time;
             vidaActual -= 45;
+            Player.instancia.SumarPuntos(5);
         }
 
         if (collision.CompareTag("Maletin") && PuedeSerGolpeado() && PlayerMovement.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
             vidaActual -= 35;
+            Player.instancia.SumarPuntos(3);
         }
 
         if (collision.CompareTag("Puño") && PuedeSerGolpeado() && PlayerMovement.golpeando)
         {
             ultimoTiempoGolpeado = Time.time;
             vidaActual -= 20;
+            Player.instancia.SumarPuntos(1);
         }
     }
 

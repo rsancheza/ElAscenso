@@ -19,6 +19,9 @@ TagManager:
   - BateRecoger
   - MaletinRecoger
   - Estus
+  - Puerta
+  - Techo
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -26,7 +29,7 @@ TagManager:
   - floorMask
   - Water
   - UI
-  - 
+  - Techo
   - 
   - 
   - 
