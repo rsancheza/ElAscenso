@@ -4762,6 +4762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5183774508826206055, guid: 35f455267eabeb5429256bfe2d72cfd6, type: 3}
+      propertyPath: musica
+      value: 
+      objectReference: {fileID: 946687719}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35f455267eabeb5429256bfe2d72cfd6, type: 3}
 --- !u!1001 &833851419
@@ -5456,6 +5460,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3452491045986546202, guid: a47324393d38c409ead6a5966058893a, type: 3}
+--- !u!1 &946687719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490107280508812668, guid: 39779fd18609cbc4cb20de322a852394, type: 3}
+  m_PrefabInstance: {fileID: 1009513144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &961451611
 PrefabInstance:
   m_ObjectHideFlags: 0

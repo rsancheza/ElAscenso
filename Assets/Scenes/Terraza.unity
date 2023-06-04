@@ -1975,10 +1975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 6182948396325475674, guid: 35f455267eabeb5429256bfe2d72cfd6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 5183774508826206055, guid: 35f455267eabeb5429256bfe2d72cfd6, type: 3}
+      propertyPath: musica
+      value: 
+      objectReference: {fileID: 2054661235}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35f455267eabeb5429256bfe2d72cfd6, type: 3}
 --- !u!1 &1465075018
@@ -2937,6 +2937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39779fd18609cbc4cb20de322a852394, type: 3}
+--- !u!1 &2054661235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490107280508812668, guid: 39779fd18609cbc4cb20de322a852394, type: 3}
+  m_PrefabInstance: {fileID: 2054661234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &29854878576771407
 Transform:
   m_ObjectHideFlags: 0

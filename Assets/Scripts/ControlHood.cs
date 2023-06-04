@@ -25,8 +25,9 @@ public class ControlHood : MonoBehaviour
     public GameObject ventanaFinJuego;
     public TextMeshProUGUI resultadoTexto;
     public TextMeshProUGUI puntuacionFinalTexto;
+    public GameObject cinematica;
 
-
+    public GameObject musica;
     public static ControlHood instancia;
 
     public Transform spawnPoint;
@@ -125,13 +126,24 @@ public class ControlHood : MonoBehaviour
     //Fin del Juego
     public void EstablecerVentanaFinJuego(bool ganado)
     {
-        ventanaFinJuego.SetActive(true);
+        musica.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+        Destroy(PlayerMovement.instancia);
+        if (!ganado)
+        {
+            cinematica.SetActive(true);
+            Invoke("QuitarCinematica", 6);
+        }
+        ventanaFinJuego.SetActive(true);
         resultadoTexto.text = ganado ? "HAS GANADO" : "HAS PERDIDO";
         resultadoTexto.color = ganado ? Color.green : Color.red;
         puntuacionFinalTexto.text = "Puntuacion Obtenida:\n " + MainManager.instance.puntuacionTotal;
-        Time.timeScale = 0f;
-        Destroy(PlayerMovement.instancia);
+    }
+
+    public void QuitarCinematica()
+    {
+        cinematica.SetActive(false);
     }
 
     public void ActivarControles()
