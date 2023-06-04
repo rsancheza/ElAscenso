@@ -24,6 +24,7 @@ public class ControlHood : MonoBehaviour
     [Header("VentanaFinJuego")]
     public GameObject ventanaFinJuego;
     public TextMeshProUGUI resultadoTexto;
+    public TextMeshProUGUI puntuacionFinalTexto;
 
 
     public static ControlHood instancia;
@@ -128,6 +129,7 @@ public class ControlHood : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         resultadoTexto.text = ganado ? "HAS GANADO" : "HAS PERDIDO";
         resultadoTexto.color = ganado ? Color.green : Color.red;
+        puntuacionFinalTexto.text = "Puntuacion Obtenida:\n " + MainManager.instance.puntuacionTotal;
         Time.timeScale = 0f;
         Destroy(PlayerMovement.instancia);
     }

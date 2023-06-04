@@ -22,6 +22,11 @@ public class Player : MonoBehaviour
         instancia = this;
     }
 
+    private void Start()
+    {
+        puntos = MainManager.instance.puntuacionTotal;
+    }
+
     void Update()
     {
         ControlHood.instancia.ActualizarVida(vidaActual, vidaMax);

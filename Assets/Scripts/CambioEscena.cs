@@ -11,6 +11,7 @@ public class CambioEscena : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            MainManager.instance.puntuacionTotal += Player.instancia.puntos;
             SceneManager.LoadScene(escena);
         }
     }
